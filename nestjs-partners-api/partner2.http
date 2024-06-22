@@ -1,0 +1,41 @@
+GET http://localhost:3001/eventos
+
+###
+# @name criarEvento
+POST http://localhost:3001/eventos
+Content-Type: application/json
+
+{
+    "nome": "New Event",
+    "data": "2017-01-01T00:00:00",
+    "descricao": "This is a new event",
+    "preco": 100
+}
+
+###
+@eventoId = {{ criarEvento.response.body.id }}
+
+###
+GET http://localhost:3001/eventos/{{eventoId}}/lugares
+
+###
+# @name criarLugar
+POST http://localhost:3001/eventos/{{eventoId}}/lugares
+Content-Type: application/json
+
+{
+    "nome": "A3"
+}
+
+###
+@lugarNome = {{ criarLugar.response.body.name }}
+
+###
+POST http://localhost:3001/eventos/{{eventoId}}/reservar
+Content-Type: application/json
+X-Api-Token: 123
+{
+    "lugares": ["{{ lugarNome }}"],
+    "tipo_ingresso": "inteira",
+    "email": "test@test.com"
+}
