@@ -1,6 +1,6 @@
 import { EventModel, SpotModel } from "@/models";
 import Link from "next/link";
-import { TicketKindSelect } from "./TickedKindSelect";
+import { TicketKindSelect } from "./TicketKindSelect";
 import { EventImage } from "@/components/EventImage";
 import { Title } from "@/components/Title";
 import { SpotSeat } from "@/components/SpotSeat";
@@ -48,7 +48,7 @@ export default async function SpotsLayoutPage ({ params }: { params: { eventId: 
     const cookieStore = cookies()
     const selectedSpots = JSON.parse(cookieStore.get("spots")?.value || "[]")
     let totalPrice = selectedSpots.length * event.price
-    const ticketKind = cookieStore.get('ticketKind')?.value
+    const ticketKind = cookieStore.get('ticketKind')?.value || "full"
 
     if (ticketKind === "half") {
         totalPrice /= 2
