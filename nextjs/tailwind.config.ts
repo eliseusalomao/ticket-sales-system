@@ -16,9 +16,13 @@ const config: Config = {
         },
         colors: {
             primary: 'rgba(25, 30, 36, 1)',
+            secondary: '#2A323C'
         },
         textColor: {
             default: '#a6adbb'
+        },
+        gridTemplateColumns: {
+            "auto-fit-cards": "repeat(auto-fit, minmax(277px, 1fr))",
         }
     },
     plugins: [],
