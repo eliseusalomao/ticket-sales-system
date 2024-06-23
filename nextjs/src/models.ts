@@ -6,6 +6,7 @@ export type EventModel = {
     price: number
     image_url: string
     location: string
+    rating: number
 }
 
 export type SpotModel = {
